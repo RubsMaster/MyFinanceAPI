@@ -17,11 +17,20 @@ export const createExpense = async (req, res) => {
 
 export const getAllExpenses = async (req, res) => {
     try {
-        const expenses = await Expense.find(); // Usamos `await` para esperar la promesa de `find`
-        console.log(expenses);
+        const expenses = await Expense.find();
         res.status(200).json(expenses);
     } catch (e) {
         console.error(e);
         res.status(500).send("Error retrieving expenses");
+    }
+}
+
+export const deleteExpenseByID = async (req, res) => {
+    try {
+        const result = await Expense.findByIdAndDelete(req.params.id)
+        res.status(200).send(`Item with id ${req.params.id} deleted succesfully`)
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(`Error trying to delete item with id ${req.params.id}`)
     }
 }
