@@ -1,12 +1,9 @@
 import Expense from '../models/expense.model';
 
-export const createExpense = async (req, res) => {
+export const createExpense = async (obj) => {
     try{
-        const expense = new Expense({
-            name: req.body.name,
-            amount: req.body.amount
-        })
-        await expense.save(); // Utilizamos el método `save` en lugar de `create`
+        const expense = new Expense(obj)
+        await expense.save();
         console.log(expense)
         res.status(201).send("Expense created successfully");
     } catch (e) {
@@ -15,13 +12,13 @@ export const createExpense = async (req, res) => {
     }   
 };
 
-export const getAllExpenses = async (req, res) => {
+export const getAllExpenses = async () => {
     try {
         const expenses = await Expense.find();
-        res.status(200).json(expenses);
+        return expenses
     } catch (e) {
         console.error(e);
-        res.status(500).send("Error retrieving expenses");
+        return Error("Error retrieving expenses");
     }
 }
 
