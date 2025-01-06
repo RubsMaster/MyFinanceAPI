@@ -1,16 +1,22 @@
 import Expense from '../models/expense.model';
 
 export const createExpense = async (obj) => {
-    try{
-        const expense = new Expense(obj)
-        await expense.save();
-        console.log(expense)
-        res.status(201).send("Expense created successfully");
+    try {
+      if (!obj.name || !obj.amount) {
+        console.error('Datos incompletos:', obj);
+        throw new Error("Faltan datos importantes");
+      }
+  
+      const expense = new Expense(obj);
+      await expense.save();
+      console.log('Gasto guardado con éxito:', expense);
+      return expense;
     } catch (e) {
-        console.error(e);
-        res.status(500).send("Error creating expense");
-    }   
-};
+      console.error('Error al guardar el gasto:', e);
+      return new Error("Error creating expense");
+    }
+  };
+  
 
 export const getAllExpenses = async () => {
     try {
