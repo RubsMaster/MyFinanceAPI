@@ -12,6 +12,7 @@ const writeReadKeyboard = {
       [{ text: "Registrar Gasto/Ingreso", callback_data: "write" }],
       [{ text: "Revisar mi actividad", callback_data: "read" }],
     ],
+    
   },
 };
 
