@@ -1,12 +1,12 @@
 import { Router } from "express";
-import {createExpense, getAllExpenses, deleteExpenseByID, getProductos, getImages} from "../controllers/expenses.controller.js"
+import {getProductos, getImages, getCategories, getSubcategories, getBrands} from "../controllers/expenses.controller.js"
 
 const router = Router();
 
-router.post('/api/createExpense', createExpense)
-router.get('/api/getAllExpenses', getAllExpenses)
-router.delete('/api/deleteExpense/:id', deleteExpenseByID)
 router.get('/api/productos', getProductos)
-router.get('/api/getImages', getImages)
+router.get('/api/imagenes', getImages)
+router.get('/api/categorias', getCategories)
+router.get('/api/subcategorias', getSubcategories)
+router.get('/api/marcas', getBrands)
 
 export default router;

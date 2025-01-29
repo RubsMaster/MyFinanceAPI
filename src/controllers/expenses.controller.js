@@ -1,7 +1,8 @@
-import Expense from "../models/expense.model.js";
 import {products} from "../datosExel/products.bd.js";
 import { images } from "../datosExel/images.bd.js";
-
+import { categories } from "../datosExel/categories.bd.js"
+import { brands } from "../datosExel/brands.bd.js";
+import { subcategories } from "../datosExel/subcategories.bd.js";
 export const createExpense = async (obj) => {
   try {
     if (!obj.name || !obj.amount) {
@@ -47,7 +48,19 @@ export const getProductos = async (req, res) => {
 };
 
 export const getImages = async (req, res) => {
-  console.log(`peticion iamges> ${Date.now()}`);
+  console.log(`peticion imagenes> ${Date.now()}`);
   res.send(images);
-  
 }
+export const getCategories = async (req, res) => {
+  console.log(`peticion categorias> ${Date.now()}`);
+  res.send(categories);
+}
+export const getSubcategories = async (req, res) => {
+  console.log(`peticion categorias> ${Date.now()}`);
+  res.send(subcategories);
+}
+export const getBrands = async (req, res) => {
+  console.log(`peticion marcas> ${Date.now()}`);
+  res.send(brands);
+}
+
