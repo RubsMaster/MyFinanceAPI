@@ -1,13 +1,13 @@
-import Expense from '../models/expense.model';
+import Expense from '../models/expense.model.js';
 
-export const createExpense = async (obj) => {
+export const createExpense = async (req, res) => {
     try {
-      if (!obj.name || !obj.amount) {
+      if (!req.body.name || !req.body.amount) {
         console.error('Datos incompletos:', obj);
         throw new Error("Faltan datos importantes");
       }
   
-      const expense = new Expense(obj);
+      const expense = new Expense(req.body);
       await expense.save();
       console.log('Gasto guardado con éxito:', expense);
       return expense;
