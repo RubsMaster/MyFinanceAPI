@@ -2,19 +2,14 @@
   "name": "myfinances",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "start": "nodemon src"
+    "dev": "nodemon src --exec babel-node"
   },
   "author": "rubs",
   "license": "ISC",
-  "engines": {
-    "npm": ">=8.0.0 <9.0.0",
-    "node": ">=16.0.0 <17.0.0"
-  },
   "description": "",
   "dependencies": {
-    "babel": "^6.23.0",
+    "babel": "^5.8.38",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
